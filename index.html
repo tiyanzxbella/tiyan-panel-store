@@ -2718,8 +2718,8 @@
           <p>Upload, Kelola, dan Download File Media Anda</p>
           
           <div class="storage-info">
-            <!-- PERUBAHAN: Kapasitas penyimpanan ditingkatkan menjadi 2GB -->
-            <div id="storage-text">Penyimpanan: <span id="used-storage">0 KB</span> dari 2 GB digunakan</div>
+            <!-- PERUBAHAN: Kapasitas penyimpanan diubah menjadi 200MB -->
+            <div id="storage-text">Penyimpanan: <span id="used-storage">0 KB</span> dari 200 MB digunakan</div>
             <div class="storage-bar">
               <div class="storage-used" id="storage-bar"></div>
             </div>
@@ -2734,8 +2734,8 @@
                 <input type="text" id="fileName" required placeholder="Berikan nama untuk file Anda">
               </div>
               <div class="form-group">
-                <!-- PERUBAHAN: Batas ukuran file ditingkatkan menjadi 500MB -->
-                <label for="fileInput">📂 Pilih File (Foto, Video, Audio, ZIP - maks 500MB)</label>
+                <!-- PERUBAHAN: Batas ukuran file diubah menjadi 200MB -->
+                <label for="fileInput">📂 Pilih File (Foto, Video, Audio, ZIP - maks 200MB)</label>
                 <input type="file" id="fileInput" accept="image/*,video/*,audio/*,.zip,.rar" required>
               </div>
               <button type="submit">⬆️ Upload File</button>
@@ -4264,8 +4264,8 @@
     function initMediaUploadCenter() {
       // Data penyimpanan file
       let mediaFiles = JSON.parse(localStorage.getItem('mediaFiles')) || [];
-      // PERUBAHAN: Kapasitas penyimpanan ditingkatkan menjadi 2GB (2048 MB)
-      const MAX_STORAGE = 2 * 1024 * 1024 * 1024; // 2 GB
+      // PERUBAHAN: Kapasitas penyimpanan diubah menjadi 200MB
+      const MAX_STORAGE = 200 * 1024 * 1024; // 200 MB
       
       // Elemen DOM
       const uploadForm = document.getElementById('uploadForm');
@@ -4294,7 +4294,7 @@
           sizeText = `${(totalSize / (1024 * 1024 * 1024)).toFixed(2)} GB`;
         }
         
-        storageText.textContent = `Penyimpanan: ${sizeText} dari 2 GB digunakan`;
+        storageText.textContent = `Penyimpanan: ${sizeText} dari 200 MB digunakan`;
         storageBar.style.width = `${Math.min(usedPercent, 100)}%`;
         
         // Warna berdasarkan penggunaan
@@ -4451,9 +4451,9 @@
           return;
         }
         
-        // PERUBAHAN: Batas ukuran file ditingkatkan menjadi 500MB
-        if (file.size > 500 * 1024 * 1024) { // 500MB
-          showNotification('File terlalu besar! Maksimal 500MB.', true);
+        // PERUBAHAN: Batas ukuran file diubah menjadi 200MB
+        if (file.size > 200 * 1024 * 1024) { // 200MB
+          showNotification('File terlalu besar! Maksimal 200MB.', true);
           return;
         }
         
