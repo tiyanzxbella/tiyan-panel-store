@@ -2854,285 +2854,6 @@
   <div class="notification" id="notification">File berhasil diupload!</div>
 
   <script>
-    // ==================== API CONFIGURATION ====================
-    const API_BASE_URL = 'http://localhost:3000/api'; // Ganti dengan URL backend Anda
-
-    // Fungsi untuk mendapatkan token dari localStorage
-    function getAuthToken() {
-      return localStorage.getItem('authToken');
-    }
-
-    // Fungsi untuk menyimpan token
-    function setAuthToken(token) {
-      localStorage.setItem('authToken', token);
-    }
-
-    // Fungsi untuk menghapus token
-    function removeAuthToken() {
-      localStorage.removeItem('authToken');
-    }
-
-    // Fungsi untuk membuat header dengan auth token
-    function getAuthHeaders() {
-      const token = getAuthToken();
-      return {
-        'Content-Type': 'application/json',
-        'Authorization': token ? `Bearer ${token}` : ''
-      };
-    }
-
-    // ==================== AUTH API FUNCTIONS ====================
-    async function apiRegister(userData) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/register`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userData)
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Registration failed');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Registration error:', error);
-        throw error;
-      }
-    }
-
-    async function apiLogin(credentials) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/login`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(credentials)
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Login failed');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Login error:', error);
-        throw error;
-      }
-    }
-
-    // ==================== PRODUCT API FUNCTIONS ====================
-    async function apiGetProducts() {
-      try {
-        const response = await fetch(`${API_BASE_URL}/products`);
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to fetch products');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Get products error:', error);
-        throw error;
-      }
-    }
-
-    async function apiCreateProduct(productData) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/products`, {
-          method: 'POST',
-          headers: getAuthHeaders(),
-          body: JSON.stringify(productData)
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to create product');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Create product error:', error);
-        throw error;
-      }
-    }
-
-    async function apiUpdateProduct(productId, productData) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
-          method: 'PUT',
-          headers: getAuthHeaders(),
-          body: JSON.stringify(productData)
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to update product');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Update product error:', error);
-        throw error;
-      }
-    }
-
-    async function apiDeleteProduct(productId) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
-          method: 'DELETE',
-          headers: getAuthHeaders()
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to delete product');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Delete product error:', error);
-        throw error;
-      }
-    }
-
-    // ==================== MEDIA API FUNCTIONS ====================
-    async function apiUploadFile(formData) {
-      try {
-        const token = getAuthToken();
-        const response = await fetch(`${API_BASE_URL}/upload`, {
-          method: 'POST',
-          headers: {
-            'Authorization': token ? `Bearer ${token}` : ''
-          },
-          body: formData
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to upload file');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Upload file error:', error);
-        throw error;
-      }
-    }
-
-    async function apiGetMedia() {
-      try {
-        const response = await fetch(`${API_BASE_URL}/media`, {
-          headers: getAuthHeaders()
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to fetch media');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Get media error:', error);
-        throw error;
-      }
-    }
-
-    async function apiDeleteMedia(mediaId) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/media/${mediaId}`, {
-          method: 'DELETE',
-          headers: getAuthHeaders()
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to delete media');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Delete media error:', error);
-        throw error;
-      }
-    }
-
-    // ==================== ORDER API FUNCTIONS ====================
-    async function apiCreateOrder(orderData) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/orders`, {
-          method: 'POST',
-          headers: getAuthHeaders(),
-          body: JSON.stringify(orderData)
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to create order');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Create order error:', error);
-        throw error;
-      }
-    }
-
-    async function apiGetOrders() {
-      try {
-        const response = await fetch(`${API_BASE_URL}/orders`, {
-          headers: getAuthHeaders()
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to fetch orders');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Get orders error:', error);
-        throw error;
-      }
-    }
-
-    // ==================== USER API FUNCTIONS ====================
-    async function apiDeleteUser(userId) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
-          method: 'DELETE',
-          headers: getAuthHeaders()
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to delete user');
-        }
-        
-        return data;
-      } catch (error) {
-        console.error('Delete user error:', error);
-        throw error;
-      }
-    }
-
     // ==================== FUNGSI JAM REAL-TIME ====================
     function updateRealTimeClock() {
       const now = new Date();
@@ -3277,15 +2998,38 @@
     });
 
     // ==================== FUNGSI MANAJEMEN PRODUK ====================
-    let produk = [];
+    let produk = JSON.parse(localStorage.getItem('produk')) || [
+      { id: 1, nama: 'Panel 1GB', harga: 1000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 1GB cocok untuk penggunaan ringan. Termasuk kuota 1GB, kecepatan tinggi, masa aktif 30 hari, dan support 24/7." },
+      { id: 2, nama: 'Panel 2GB', harga: 2000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 2GB untuk penggunaan menengah. Menawarkan kuota 2GB, bisa dibagi ke beberapa perangkat, tanpa throttle kecepatan, dan garansi pengisian ulang." },
+      { id: 3, nama: 'Panel 3GB', harga: 3000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 3GB ideal untuk kebutuhan harian. Dilengkapi kuota 3GB, stabil untuk browsing dan streaming, serta fitur keamanan standar." },
+      { id: 4, nama: 'Panel 4GB', harga: 4000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 4GB menawarkan keseimbangan. Dengan kuota 4GB, cocok untuk gamer kasual dan pekerja remote, dilengkapi akses cepat ke server." },
+      { id: 5, nama: 'Panel 5GB', harga: 5000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 5GB adalah pilihan populer. Menyediakan kuota 5GB, cocok untuk streaming HD dan video conference, serta dukungan multi-platform." },
+      { id: 6, nama: 'Panel 6GB', harga: 6000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 6GB untuk penggunaan intensif. Dengan kuota 6GB, koneksi sangat stabil untuk download besar dan aktivitas online berat." },
+      { id: 7, nama: 'Panel 7GB', harga: 7000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 7GB memberikan performa ekstra. Kuota 7GB dengan prioritas jaringan, cocok untuk bisnis kecil dan penggunaan keluarga." },
+      { id: 8, nama: 'Panel 8GB', harga: 8000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 8GB adalah solusi lengkap. Kuota 8GB, fitur VPN terintegrasi, dan perlindungan DDoS untuk keamanan lebih." },
+      { id: 9, nama: 'Panel 9GB', harga: 9000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 9GB untuk pengguna tingkat lanjut. Kuota 9GB, dengan opsi kustomisasi server dan performa maksimal untuk aplikasi berat." },
+      { id: 10, nama: 'Panel 10GB', harga: 10000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel 10GB, paket tertinggi reguler. Kuota 10GB, sangat direkomendasikan untuk profesional dan penggunaan data tinggi." },
+      { id: 11, nama: 'Panel Unli', harga: 15000, gambar: 'https://cdn.xtermai.xyz/i6/8LYhd',
+        deskripsi: "Panel Unlimited adalah paket premium kami. Kuota tanpa batas, kecepatan stabil 24/7, prioritas jaringan, dan masa aktif 30 hari. Pilihan terbaik untuk penggunaan berat!" },
+    ];
 
-    // Simpan produk ke localStorage (fallback)
+    // Simpan produk ke localStorage
     function saveProducts() {
       localStorage.setItem('produk', JSON.stringify(produk));
     }
 
     // Tambah produk baru
-    document.getElementById('addProductForm').addEventListener('submit', async function(e) {
+    document.getElementById('addProductForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
       const name = document.getElementById('productName').value;
@@ -3293,110 +3037,91 @@
       const image = document.getElementById('productImage').value;
       const description = document.getElementById('productDescription').value;
       
-      try {
-        await apiCreateProduct({
-          name,
-          price,
-          image,
-          description
-        });
-        
-        // Refresh product list
-        displayProduk();
-        loadProductsForAdmin();
-        
-        // Reset form
-        document.getElementById('addProductForm').reset();
-        
-        alert('Produk berhasil ditambahkan!');
-      } catch (error) {
-        alert('Gagal menambah produk: ' + error.message);
-      }
+      const newProduct = {
+        id: Date.now(),
+        nama: name,
+        harga: price,
+        gambar: image,
+        deskripsi: description
+      };
+      
+      produk.push(newProduct);
+      saveProducts();
+      displayProduk();
+      loadProductsForAdmin();
+      
+      // Reset form
+      document.getElementById('addProductForm').reset();
+      
+      alert('Produk berhasil ditambahkan!');
     });
 
     // Load produk untuk admin panel
-    async function loadProductsForAdmin() {
-      try {
-        const products = await apiGetProducts();
-        const productList = document.getElementById('productListAdmin');
-        productList.innerHTML = '';
-        
-        if (products.length === 0) {
-          productList.innerHTML = '<p>Tidak ada produk</p>';
-          return;
-        }
-        
-        products.forEach(product => {
-          const productItem = document.createElement('div');
-          productItem.className = 'product-item-admin';
-          productItem.innerHTML = `
-            <div>
-              <h4>${product.name}</h4>
-              <p>Rp ${product.price.toLocaleString()}</p>
-            </div>
-            <div class="product-actions">
-              <button class="edit-btn" onclick="editProduct('${product._id}')">Edit</button>
-              <button class="delete-btn-admin" onclick="deleteProduct('${product._id}')">Hapus</button>
-            </div>
-          `;
-          productList.appendChild(productItem);
-        });
-      } catch (error) {
-        console.error('Error loading products for admin:', error);
-        const productList = document.getElementById('productListAdmin');
-        productList.innerHTML = '<p>Gagal memuat produk</p>';
+    function loadProductsForAdmin() {
+      const productList = document.getElementById('productListAdmin');
+      productList.innerHTML = '';
+      
+      if (produk.length === 0) {
+        productList.innerHTML = '<p>Tidak ada produk</p>';
+        return;
       }
+      
+      produk.forEach(product => {
+        const productItem = document.createElement('div');
+        productItem.className = 'product-item-admin';
+        productItem.innerHTML = `
+          <div>
+            <h4>${product.nama}</h4>
+            <p>Rp ${product.harga.toLocaleString()}</p>
+          </div>
+          <div class="product-actions">
+            <button class="edit-btn" onclick="editProduct(${product.id})">Edit</button>
+            <button class="delete-btn-admin" onclick="deleteProduct(${product.id})">Hapus</button>
+          </div>
+        `;
+        productList.appendChild(productItem);
+      });
     }
 
     // Edit produk
-    async function editProduct(id) {
-      try {
-        const products = await apiGetProducts();
-        const product = products.find(p => p._id === id);
-        
-        if (!product) return;
-        
-        const newName = prompt('Nama produk baru:', product.name);
-        if (newName === null) return;
-        
-        const newPrice = prompt('Harga baru:', product.price);
-        if (newPrice === null) return;
-        
-        const newImage = prompt('URL gambar baru:', product.image);
-        if (newImage === null) return;
-        
-        const newDescription = prompt('Deskripsi baru:', product.description);
-        if (newDescription === null) return;
-        
-        await apiUpdateProduct(id, {
-          name: newName,
-          price: parseInt(newPrice),
-          image: newImage,
-          description: newDescription
-        });
-        
-        displayProduk();
-        loadProductsForAdmin();
-        
-        alert('Produk berhasil diupdate!');
-      } catch (error) {
-        alert('Gagal mengupdate produk: ' + error.message);
-      }
+    function editProduct(id) {
+      const product = produk.find(p => p.id === id);
+      if (!product) return;
+      
+      const newName = prompt('Nama produk baru:', product.nama);
+      if (newName === null) return;
+      
+      const newPrice = prompt('Harga baru:', product.harga);
+      if (newPrice === null) return;
+      
+      const newImage = prompt('URL gambar baru:', product.gambar);
+      if (newImage === null) return;
+      
+      const newDescription = prompt('Deskripsi baru:', product.deskripsi);
+      if (newDescription === null) return;
+      
+      product.nama = newName;
+      product.harga = parseInt(newPrice);
+      product.gambar = newImage;
+      product.deskripsi = newDescription;
+      
+      saveProducts();
+      displayProduk();
+      loadProductsForAdmin();
+      
+      alert('Produk berhasil diupdate!');
     }
 
     // Hapus produk
-    async function deleteProduct(id) {
+    function deleteProduct(id) {
       if (!confirm('Apakah Anda yakin ingin menghapus produk ini?')) return;
       
-      try {
-        await apiDeleteProduct(id);
-        displayProduk();
-        loadProductsForAdmin();
-        
-        alert('Produk berhasil dihapus!');
-      } catch (error) {
-        alert('Gagal menghapus produk: ' + error.message);
-      }
+      produk = produk.filter(p => p.id !== id);
+      saveProducts();
+      displayProduk();
+      loadProductsForAdmin();
+      
+      alert('Produk berhasil dihapus!');
     }
 
     // ==================== FUNGSI EDIT KONTEN WEB ====================
@@ -3661,8 +3386,8 @@
       resetPasswordContent.style.display = 'none';
     });
 
-    // Proses login dengan API
-    loginSubmit.addEventListener('click', async function() {
+    // Proses login
+    loginSubmit.addEventListener('click', function() {
       const username = document.getElementById('loginUsername').value.trim();
       const password = document.getElementById('loginPassword').value.trim();
       
@@ -3671,14 +3396,12 @@
         return;
       }
       
-      try {
-        const result = await apiLogin({ username, password });
-        
+      const user = users.find(u => u.username === username && u.password === password);
+      
+      if (user) {
         alert('Login berhasil!');
-        // Simpan token dan data user
-        setAuthToken(result.token);
-        localStorage.setItem('currentUser', JSON.stringify(result.user));
-        
+        // Simpan data user di localStorage
+        localStorage.setItem('currentUser', JSON.stringify(user));
         // Update UI untuk user yang login
         updateLoginUI(true);
         // Tampilkan konten utama
@@ -3687,13 +3410,13 @@
         // Reset form
         document.getElementById('loginUsername').value = '';
         document.getElementById('loginPassword').value = '';
-      } catch (error) {
-        alert(error.message);
+      } else {
+        alert('Username atau password salah');
       }
     });
 
-    // Proses sign up dengan API
-    signupSubmit.addEventListener('click', async function() {
+    // Proses sign up
+    signupSubmit.addEventListener('click', function() {
       const username = document.getElementById('signupUsername').value.trim();
       const email = document.getElementById('signupEmail').value.trim();
       const password = document.getElementById('signupPassword').value.trim();
@@ -3720,21 +3443,31 @@
         return;
       }
       
-      try {
-        const result = await apiRegister({ username, email, password });
-        
-        alert('Pendaftaran berhasil! Silakan login');
-        signupContent.style.display = 'none';
-        loginContent.style.display = 'flex';
-        
-        // Reset form
-        document.getElementById('signupUsername').value = '';
-        document.getElementById('signupEmail').value = '';
-        document.getElementById('signupPassword').value = '';
-        document.getElementById('signupConfirmPassword').value = '';
-      } catch (error) {
-        alert(error.message);
+      // Cek apakah username/email sudah terdaftar
+      if (users.some(u => u.username === username)) {
+        alert('Username sudah digunakan');
+        return;
       }
+      
+      if (users.some(u => u.email === email)) {
+        alert('Email sudah terdaftar');
+        return;
+      }
+      
+      // Tambahkan user baru
+      const newUser = { username, email, password };
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+      
+      alert('Pendaftaran berhasil! Silakan login');
+      signupContent.style.display = 'none';
+      loginContent.style.display = 'flex';
+      
+      // Reset form
+      document.getElementById('signupUsername').value = '';
+      document.getElementById('signupEmail').value = '';
+      document.getElementById('signupPassword').value = '';
+      document.getElementById('signupConfirmPassword').value = '';
     });
 
     // ==================== FITUR LUPA PASSWORD ====================
@@ -3896,29 +3629,20 @@
     }
 
     // ==================== PRODUK DAN FUNGSIONALITAS UTAMA ====================
-    async function displayProduk() {
-      try {
-        const products = await apiGetProducts();
-        const produkContainer = document.getElementById('produk');
-        produkContainer.innerHTML = '';
-        
-        for (let i = 0; i < products.length; i++) {
-          const item = products[i];
-          const itemDiv = document.createElement('div');
-          itemDiv.classList.add('produk-item');
-          itemDiv.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
-            <h2>${item.name}</h2>
-            <p>Rp ${item.price.toLocaleString()}</p>
-            <button onclick="beliProduk('${item._id}', event)">Beli</button>
-          `;
-          produkContainer.appendChild(itemDiv);
-        }
-      } catch (error) {
-        console.error('Error loading products:', error);
-        // Fallback ke data lokal jika API gagal
-        const produkContainer = document.getElementById('produk');
-        produkContainer.innerHTML = '<p>Gagal memuat produk. Silakan refresh halaman.</p>';
+    function displayProduk() {
+      const produkContainer = document.getElementById('produk');
+      produkContainer.innerHTML = '';
+      for (let i = 0; i < produk.length; i++) {
+        const item = produk[i];
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('produk-item');
+        itemDiv.innerHTML = `
+          <img src="${item.gambar}" alt="${item.nama}">
+          <h2>${item.nama}</h2>
+          <p>Rp ${item.harga.toLocaleString()}</p>
+          <button onclick="beliProduk(${item.id}, event)">Beli</button>
+        `;
+        produkContainer.appendChild(itemDiv);
       }
     }
 
@@ -3983,8 +3707,8 @@
       document.querySelector('.sidebar-menu a[data-section="produk-section"]').click();
     });
     
-    // Proses hapus akun dengan API
-    deleteAccountBtn.addEventListener('click', async function() {
+    // Proses hapus akun
+    deleteAccountBtn.addEventListener('click', function() {
       const username = document.getElementById('deleteUsername').value.trim();
       const password = document.getElementById('deletePassword').value.trim();
       
@@ -4007,25 +3731,27 @@
         return;
       }
       
+      // Verifikasi password
+      const userIndex = users.findIndex(u => u.username === username && u.password === password);
+      
+      if (userIndex === -1) {
+        alert('Password salah');
+        return;
+      }
+      
       // Konfirmasi penghapusan
       if (!confirm('Apakah Anda yakin ingin menghapus akun Anda secara permanen? Tindakan ini tidak dapat dibatalkan.')) {
         return;
       }
       
-      try {
-        // Verifikasi password dengan login ulang
-        await apiLogin({ username, password });
-        
-        // Hapus akun
-        await apiDeleteUser(currentUser.id);
-        
-        // Logout user
-        logoutUser();
-        
-        alert('Akun Anda telah berhasil dihapus');
-      } catch (error) {
-        alert('Password salah atau gagal menghapus akun: ' + error.message);
-      }
+      // Hapus akun dari database
+      users.splice(userIndex, 1);
+      localStorage.setItem('users', JSON.stringify(users));
+      
+      // Logout user
+      logoutUser();
+      
+      alert('Akun Anda telah berhasil dihapus');
     });
 
     // ==================== AI CHAT ====================
@@ -4537,7 +4263,7 @@
     // ==================== MEDIA UPLOAD CENTER ====================
     function initMediaUploadCenter() {
       // Data penyimpanan file
-      let mediaFiles = [];
+      let mediaFiles = JSON.parse(localStorage.getItem('mediaFiles')) || [];
       // PERUBAHAN: Kapasitas penyimpanan ditingkatkan menjadi 2GB (2048 MB)
       const MAX_STORAGE = 2 * 1024 * 1024 * 1024; // 2 GB
       
@@ -4552,8 +4278,8 @@
       const storageBar = document.getElementById('storage-bar');
       
       // Update tampilan penyimpanan
-      function updateStorageDisplay(files) {
-        const totalSize = files.reduce((sum, file) => sum + file.size, 0);
+      function updateStorageDisplay() {
+        const totalSize = mediaFiles.reduce((sum, file) => sum + file.size, 0);
         const usedPercent = (totalSize / MAX_STORAGE) * 100;
         
         // Format ukuran
@@ -4590,6 +4316,12 @@
         setTimeout(() => {
           notification.classList.remove('show');
         }, 3000);
+      }
+      
+      // Fungsi untuk menyimpan file
+      function saveFiles() {
+        localStorage.setItem('mediaFiles', JSON.stringify(mediaFiles));
+        updateStorageDisplay();
       }
       
       // Fungsi untuk menampilkan file
@@ -4638,7 +4370,7 @@
               <div class="file-date">${formatDate(file.date)}</div>
               <div class="file-size">${sizeText}</div>
               <div class="file-actions">
-                <a href="${API_BASE_URL}${file.url}" download="${file.name}" class="download-btn">
+                <a href="${file.data}" download="${file.name}" class="download-btn">
                   <i class="fas fa-download"></i> Download
                 </a>
                 <div class="delete-btn" data-id="${file.id}">
@@ -4660,25 +4392,33 @@
       }
       
       // Fungsi untuk menghapus file
-      async function deleteFile(fileId) {
+      function deleteFile(fileId) {
         if (!confirm('Apakah Anda yakin ingin menghapus file ini?')) {
           return;
         }
         
-        try {
-          await apiDeleteMedia(fileId);
+        const fileIndex = mediaFiles.findIndex(file => file.id == fileId);
+        if (fileIndex !== -1) {
+          mediaFiles.splice(fileIndex, 1);
+          saveFiles();
           
-          // Reload file list
-          await loadMediaFiles();
+          // Tampilkan file yang tersisa (dengan filter video jika tidak sedang pencarian)
+          const searchTerm = searchInput.value.trim().toLowerCase();
+          if (searchTerm) {
+            displayFiles(mediaFiles.filter(file => 
+              file.name.toLowerCase().includes(searchTerm) || 
+              (file.type && file.type.toLowerCase().includes(searchTerm))
+            ));
+          } else {
+            displayFiles(mediaFiles.filter(file => !file.type.includes('video')));
+          }
+          
           showNotification('File berhasil dihapus');
-        } catch (error) {
-          showNotification('Gagal menghapus file: ' + error.message, true);
         }
       }
       
       // Fungsi untuk memformat tanggal
       function formatDate(dateString) {
-        const date = new Date(dateString);
         const options = { 
           year: 'numeric', 
           month: 'long', 
@@ -4686,30 +4426,17 @@
           hour: '2-digit',
           minute: '2-digit'
         };
-        return date.toLocaleDateString('id-ID', options);
+        return new Date(dateString).toLocaleDateString('id-ID', options);
       }
       
-      // Fungsi untuk memuat file dari API
-      async function loadMediaFiles() {
-        try {
-          const files = await apiGetMedia();
-          
-          // Tampilkan file yang tersisa (dengan filter video jika tidak sedang pencarian)
-          const searchTerm = searchInput.value.trim().toLowerCase();
-          if (searchTerm) {
-            displayFiles(files.filter(file => 
-              file.name.toLowerCase().includes(searchTerm) || 
-              (file.type && file.type.toLowerCase().includes(searchTerm))
-            ));
-          } else {
-            displayFiles(files.filter(file => !file.type.includes('video')));
-          }
-          
-          updateStorageDisplay(files);
-        } catch (error) {
-          console.error('Error loading media files:', error);
-          showNotification('Gagal memuat file', true);
-        }
+      // Fungsi untuk membaca file sebagai Data URL
+      function readFileAsDataURL(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
       }
       
       // Fungsi untuk menangani upload
@@ -4730,52 +4457,74 @@
           return;
         }
         
+        // Hitung total ukuran penyimpanan
+        const totalSize = mediaFiles.reduce((sum, f) => sum + f.size, 0) + file.size;
+        if (totalSize > MAX_STORAGE) {
+          showNotification('Penyimpanan penuh! Hapus beberapa file.', true);
+          return;
+        }
+        
         try {
-          const formData = new FormData();
-          formData.append('file', file);
-          formData.append('fileName', fileName);
+          // Baca file sebagai Data URL
+          const dataURL = await readFileAsDataURL(file);
           
-          const result = await apiUploadFile(formData);
+          // Tambahkan file baru
+          const newFile = {
+            id: Date.now(),
+            name: fileName,
+            type: file.type,
+            size: file.size,
+            data: dataURL,
+            date: new Date().toISOString()
+          };
+          
+          mediaFiles.push(newFile);
+          saveFiles();
+          
+          // Tampilkan file yang tersisa (dengan filter video jika tidak sedang pencarian)
+          const searchTerm = searchInput.value.trim().toLowerCase();
+          if (searchTerm) {
+            displayFiles(mediaFiles.filter(file => 
+              file.name.toLowerCase().includes(searchTerm) || 
+              (file.type && file.type.toLowerCase().includes(searchTerm))
+            ));
+          } else {
+            displayFiles(mediaFiles.filter(file => !file.type.includes('video')));
+          }
           
           showNotification(`File "${fileName}" berhasil diupload!`);
           
           // Reset form
           uploadForm.reset();
-          
-          // Reload file list
-          await loadMediaFiles();
         } catch (error) {
-          showNotification('Gagal mengupload file: ' + error.message, true);
+          console.error('Error uploading file:', error);
+          // Tidak menampilkan pesan "gagal mengupload media"
         }
       });
       
       // Fungsi untuk pencarian
-      searchInput.addEventListener('input', async function() {
+      searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase().trim();
         
-        try {
-          const files = await apiGetMedia();
-          
-          if (searchTerm === '') {
-            // Jika tidak ada pencarian, sembunyikan video
-            displayFiles(files.filter(file => !file.type.includes('video')));
-            return;
-          }
-          
-          // Jika ada pencarian, tampilkan semua file yang cocok termasuk video
-          const filteredFiles = files.filter(file => 
-            file.name.toLowerCase().includes(searchTerm) || 
-            (file.type && file.type.toLowerCase().includes(searchTerm))
-          );
-          
-          displayFiles(filteredFiles);
-        } catch (error) {
-          console.error('Error searching files:', error);
+        if (searchTerm === '') {
+          // Jika tidak ada pencarian, sembunyikan video
+          displayFiles(mediaFiles.filter(file => !file.type.includes('video')));
+          return;
         }
+        
+        // Jika ada pencarian, tampilkan semua file yang cocok termasuk video
+        const filteredFiles = mediaFiles.filter(file => 
+          file.name.toLowerCase().includes(searchTerm) || 
+          (file.type && file.type.toLowerCase().includes(searchTerm))
+        );
+        
+        displayFiles(filteredFiles);
       });
       
-      // Load files saat pertama kali
-      loadMediaFiles();
+      // Tampilkan file saat pertama kali dimuat (tanpa video)
+      const filesWithoutVideo = mediaFiles.filter(file => !file.type.includes('video'));
+      displayFiles(filesWithoutVideo);
+      updateStorageDisplay();
     }
     
     // ==================== SALJU DAN DETEKSI MOBILE ====================
@@ -4874,9 +4623,8 @@
       });
     }
 
-    // Modifikasi fungsi logout untuk menghapus token
+    // Fungsi logout
     function logoutUser() {
-      removeAuthToken();
       localStorage.removeItem('currentUser');
       updateLoginUI(false);
       loginContainer.style.display = 'flex';
