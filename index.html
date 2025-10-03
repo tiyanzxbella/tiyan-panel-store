@@ -253,13 +253,7 @@
       to { opacity: 1; }
     }
 
-    /* ==================== GLOWING LOGIN FORM ==================== */
-    @property --a {
-      syntax: "<angle>";
-      inherits: false;
-      initial-value: 0deg;
-    }
-
+    /* ==================== LOGIN FORM ==================== */
     .login-container {
       position: fixed;
       top: 0;
@@ -276,85 +270,28 @@
     .login-box {
       position: relative;
       width: 400px;
-      height: 200px;
-      background: repeating-conic-gradient(
-        from var(--a),
-        #9C27B0 0%, /* Ungu tua */
-        #9C27B0 5%,
-        transparent 5%,
-        transparent 40%,
-        #9C27B0 50%
-      );
-      filter: drop-shadow(0 15px 50px #000);
-      animation: rotating 4s linear infinite;
-      border-radius: 20px;
+      height: 500px;
+      background: var(--card-bg);
+      border-radius: 15px;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: 0.5s;
-    }
-
-    .login-box:hover {
-      width: 450px;
-      height: 500px;
-    }
-
-    @keyframes rotating {
-      0% {
-        --a: 0deg;
-      }
-      100% {
-        --a: 360deg;
-      }
-    }
-
-    .login-box::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: repeating-conic-gradient(
-        from var(--a),
-        #4CAF50 0%, /* Hijau */
-        #4CAF50 5%,
-        transparent 5%,
-        transparent 40%,
-        #4CAF50 50%
-      );
-      filter: drop-shadow(0 15px 50px #000);
-      border-radius: 20px;
-      animation: rotating 4s linear infinite;
-      animation-delay: -1s;
-    }
-
-    .login-box::after {
-      content: "";
-      position: absolute;
-      inset: 4px;
-      background: #1d1d2a;
-      border-radius: 15px;
-      border: 8px solid #151520;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--primary-color);
     }
 
     .login-form {
-      position: absolute;
-      inset: 60px;
+      width: 100%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 10px;
       flex-direction: column;
-      background: rgba(0, 0, 0, 0.4);
       z-index: 1000;
-      box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.5);
-      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-      transition: 0.5s;
       color: #fff;
       overflow: hidden;
-    }
-
-    .login-box:hover .login-form {
-      inset: 40px;
+      padding: 40px;
     }
 
     .login-content {
@@ -363,14 +300,8 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      transform: translateY(126px);
       gap: 20px;
-      width: 70%;
-      transition: 0.5s;
-    }
-
-    .login-box:hover .login-content {
-      transform: translateY(0px);
+      width: 100%;
     }
 
     .login-content h2 {
@@ -486,10 +417,6 @@
       gap: 15px;
     }
 
-    .login-box:hover #signupContent {
-      transform: translateY(0px);
-    }
-
     /* Style untuk form lupa password */
     #forgotPasswordContent {
       display: flex;
@@ -497,19 +424,11 @@
       gap: 15px;
     }
 
-    .login-box:hover #forgotPasswordContent {
-      transform: translateY(0px);
-    }
-
     /* Style untuk form reset password */
     #resetPasswordContent {
       display: flex;
       flex-direction: column;
       gap: 15px;
-    }
-
-    .login-box:hover #resetPasswordContent {
-      transform: translateY(0px);
     }
 
     /* ==================== ADMIN LOGIN MODAL ==================== */
@@ -843,14 +762,6 @@
       width: 28px;
       height: 28px;
       vertical-align: middle;
-    }
-
-    canvas#salju {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
     }
 
     h1 {
@@ -1665,268 +1576,6 @@
       text-decoration: underline;
     }
 
-    /* ==================== MEDIA UPLOAD CENTER STYLES ==================== */
-    .media-upload-section {
-      padding: 20px;
-    }
-
-    .media-upload-section h2 {
-      margin-bottom: 20px;
-      color: var(--primary-color);
-      text-align: center;
-    }
-    
-    .storage-info {
-      text-align: center;
-      margin-bottom: 25px;
-      padding: 15px;
-      background-color: rgba(138, 43, 226, 0.1);
-      border-radius: 12px;
-      color: #B0BEC5;
-      font-size: 14px;
-    }
-    
-    .storage-bar {
-      height: 8px;
-      background-color: rgba(20, 20, 30, 0.8);
-      border-radius: 4px;
-      margin: 10px 0;
-      overflow: hidden;
-    }
-    
-    .storage-used {
-      height: 100%;
-      background: linear-gradient(90deg, #8A2BE2, #4CAF50);
-      border-radius: 4px;
-      transition: width 0.5s ease;
-    }
-
-    .upload-section {
-      background: var(--card-bg);
-      padding: 30px;
-      border-radius: 12px;
-      margin-bottom: 35px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .search-section {
-      margin-bottom: 30px;
-      background: var(--card-bg);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .file-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 25px;
-    }
-
-    .file-card {
-      border: 1px solid rgba(138, 43, 226, 0.2);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background-color: var(--card-bg);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .file-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-      border-color: #8A2BE2;
-    }
-
-    .file-preview {
-      height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(30, 30, 40, 0.5);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .file-icon {
-      font-size: 70px;
-      color: #8A2BE2;
-      text-align: center;
-      transition: transform 0.3s, color 0.3s;
-    }
-    
-    .file-card:hover .file-icon {
-      transform: scale(1.1);
-      color: #4CAF50;
-    }
-
-    .file-type-tag {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(138, 43, 226, 0.85);
-      color: white;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .file-info {
-      padding: 20px;
-    }
-
-    .file-name {
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #D1C4E9;
-      font-size: 18px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .file-date {
-      color: #B0BEC5;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-    
-    .file-size {
-      font-size: 12px;
-      color: #4CAF50;
-      margin-bottom: 15px;
-    }
-
-    .file-actions {
-      display: flex;
-      gap: 12px;
-    }
-
-    .download-btn {
-      background: linear-gradient(135deg, #4CAF50, #388E3C);
-      flex: 1;
-      text-align: center;
-      color: white;
-      text-decoration: none;
-      padding: 10px 0;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 500;
-      transition: transform 0.3s;
-    }
-
-    .download-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
-    }
-
-    .delete-btn {
-      background: linear-gradient(135deg, #f44336, #d32f2f);
-      flex: 1;
-      text-align: center;
-      color: white;
-      text-decoration: none;
-      padding: 10px 0;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 500;
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-
-    .delete-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
-    }
-
-    .no-files {
-      text-align: center;
-      color: #B0BEC5;
-      padding: 50px;
-      grid-column: 1 / -1;
-      background-color: var(--card-bg);
-      border-radius: 12px;
-    }
-
-    .no-files i {
-      font-size: 60px;
-      margin-bottom: 20px;
-      display: block;
-      color: #8A2BE2;
-    }
-
-    .no-files p {
-      font-size: 18px;
-    }
-
-    .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #28a745;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      transform: translateX(200%);
-      transition: transform 0.4s;
-      z-index: 1000;
-    }
-
-    .notification.show {
-      transform: translateX(0);
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: #D1C4E9;
-    }
-
-    .form-group input[type="text"], 
-    .form-group input[type="file"] {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid rgba(138, 43, 226, 0.3);
-      border-radius: 8px;
-      font-size: 16px;
-      transition: border 0.3s;
-      background-color: rgba(0, 0, 0, 0.3);
-      color: white;
-    }
-
-    .form-group input[type="text"]:focus, 
-    .form-group input[type="file"]:focus {
-      border-color: #8A2BE2;
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
-    }
-
-    .form-group input[type="file"] {
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.2);
-    }
-
-    .upload-section button {
-      background: linear-gradient(135deg, #8A2BE2, #6A1B9A);
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 500;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
-    }
-
-    .upload-section button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
-    }
-    
     /* ==================== STYLE ADMIN PANEL ==================== */
     .admin-panel {
       position: fixed;
@@ -2229,11 +1878,6 @@
       /* Mobile styles for login form */
       .login-box {
         width: 90%;
-        height: 180px;
-      }
-      
-      .login-box:hover {
-        width: 90%;
         height: 500px;
       }
       
@@ -2261,15 +1905,6 @@
         font-size: 24px;
       }
 
-      /* Media upload center mobile styles */
-      .file-list {
-        grid-template-columns: 1fr;
-      }
-      
-      .upload-section, .search-section {
-        padding: 20px;
-      }
-      
       /* Admin panel mobile styles */
       .admin-panel {
         bottom: 10px;
@@ -2307,8 +1942,6 @@
   </style>
 </head>
 <body>
-  <canvas id="salju"></canvas>
-
   <!-- Admin Login Modal -->
   <div class="admin-login-modal" id="adminLoginModal">
     <div class="admin-login-box">
@@ -2427,7 +2060,8 @@
       <li><a href="#" data-section="qr-section"><i class="fas fa-qrcode"></i> QRIS</a></li>
       <li><a href="#" data-section="contact-section"><i class="fas fa-address-book"></i> Kontak</a></li>
       <li><a href="#" data-section="web-links-section"><i class="fas fa-link"></i> Web Links</a></li>
-      <li><a href="#" data-section="media-upload-section"><i class="fas fa-upload"></i> Media Upload</a></li>
+      <li><a href="https://list-web-olive.vercel.app/" target="_blank"><i class="fas fa-list"></i> List MyWeb</a></li>
+      <li><a href="https://tiyanzxbella.github.io/Gemini-ai/" target="_blank"><i class="fas fa-robot"></i> Gemini AI</a></li>
       <li><a href="#" data-section="admin-section" id="admin-section-link"><i class="fas fa-cog"></i> Admin Panel</a></li>
       <li><a href="https://myportofoliotiyan.vercel.app/" target="_blank"><i class="fas fa-user-tie"></i> Portofolio</a></li>
       <li><a href="https://buylink.id/Tiyanstore" target="_blank"><i class="fas fa-shopping-cart"></i> Topup & PPOB</a></li>
@@ -2452,7 +2086,7 @@
     <i class="fas fa-bars"></i>
   </button>
 
-  <!-- Glowing Login Form -->
+  <!-- Login Form -->
   <div class="login-container" id="loginContainer">
     <div class="login-box">
       <span class="close-login" id="closeLogin">✕</span>
@@ -2711,53 +2345,6 @@
         </div>
       </div>
       
-      <!-- Media Upload Section -->
-      <div id="media-upload-section" class="content-section">
-        <div class="media-upload-section">
-          <h2>📁 Media Upload Center</h2>
-          <p>Upload, Kelola, dan Download File Media Anda</p>
-          
-          <div class="storage-info">
-            <!-- PERUBAHAN: Kapasitas penyimpanan diubah menjadi 200MB -->
-            <div id="storage-text">Penyimpanan: <span id="used-storage">0 KB</span> dari 200 MB digunakan</div>
-            <div class="storage-bar">
-              <div class="storage-used" id="storage-bar"></div>
-            </div>
-            <small>Kapasitas penyimpanan lokal terbatas</small>
-          </div>
-          
-          <section class="upload-section">
-            <h2>📤 Upload File Baru</h2>
-            <form id="uploadForm">
-              <div class="form-group">
-                <label for="fileName">✏️ Nama File</label>
-                <input type="text" id="fileName" required placeholder="Berikan nama untuk file Anda">
-              </div>
-              <div class="form-group">
-                <!-- PERUBAHAN: Batas ukuran file diubah menjadi 200MB -->
-                <label for="fileInput">📂 Pilih File (Foto, Video, Audio, ZIP - maks 200MB)</label>
-                <input type="file" id="fileInput" accept="image/*,video/*,audio/*,.zip,.rar" required>
-              </div>
-              <button type="submit">⬆️ Upload File</button>
-            </form>
-          </section>
-          
-          <section class="search-section">
-            <h2>🔍 Cari File</h2>
-            <div class="form-group">
-              <input type="text" id="searchInput" placeholder="Ketik nama file untuk mencari...">
-            </div>
-          </section>
-          
-          <section class="file-list-section">
-            <h2>🗂 File Tersedia</h2>
-            <div class="file-list" id="fileList">
-              <!-- File akan ditampilkan di sini -->
-            </div>
-          </section>
-        </div>
-      </div>
-      
       <!-- Admin Section -->
       <div id="admin-section" class="content-section">
         <div class="admin-section-content">
@@ -2850,8 +2437,6 @@
       </div>
     </div>
   </div>
-
-  <div class="notification" id="notification">File berhasil diupload!</div>
 
   <script>
     // ==================== FUNGSI JAM REAL-TIME ====================
@@ -3322,9 +2907,6 @@
       if (isMobileDevice()) {
         popupWarning.style.display = 'flex';
       }
-
-      // Inisialisasi media upload center
-      initMediaUploadCenter();
       
       // Load konten web yang disimpan
       loadWebContent();
@@ -4260,333 +3842,13 @@
       }, 1000);
     });
 
-    // ==================== MEDIA UPLOAD CENTER ====================
-    function initMediaUploadCenter() {
-      // Data penyimpanan file
-      let mediaFiles = JSON.parse(localStorage.getItem('mediaFiles')) || [];
-      // PERUBAHAN: Kapasitas penyimpanan diubah menjadi 200MB
-      const MAX_STORAGE = 200 * 1024 * 1024; // 200 MB
-      
-      // Elemen DOM
-      const uploadForm = document.getElementById('uploadForm');
-      const fileInput = document.getElementById('fileInput');
-      const fileNameInput = document.getElementById('fileName');
-      const searchInput = document.getElementById('searchInput');
-      const fileList = document.getElementById('fileList');
-      const notification = document.getElementById('notification');
-      const storageText = document.getElementById('used-storage');
-      const storageBar = document.getElementById('storage-bar');
-      
-      // Update tampilan penyimpanan
-      function updateStorageDisplay() {
-        const totalSize = mediaFiles.reduce((sum, file) => sum + file.size, 0);
-        const usedPercent = (totalSize / MAX_STORAGE) * 100;
-        
-        // Format ukuran
-        let sizeText;
-        if (totalSize < 1024) {
-          sizeText = `${totalSize} bytes`;
-        } else if (totalSize < 1024 * 1024) {
-          sizeText = `${(totalSize / 1024).toFixed(1)} KB`;
-        } else if (totalSize < 1024 * 1024 * 1024) {
-          sizeText = `${(totalSize / (1024 * 1024)).toFixed(2)} MB`;
-        } else {
-          sizeText = `${(totalSize / (1024 * 1024 * 1024)).toFixed(2)} GB`;
-        }
-        
-        storageText.textContent = `Penyimpanan: ${sizeText} dari 200 MB digunakan`;
-        storageBar.style.width = `${Math.min(usedPercent, 100)}%`;
-        
-        // Warna berdasarkan penggunaan
-        if (usedPercent > 90) {
-          storageBar.style.background = 'linear-gradient(90deg, #f44336, #d32f2f)';
-        } else if (usedPercent > 70) {
-          storageBar.style.background = 'linear-gradient(90deg, #ff9800, #f57c00)';
-        } else {
-          storageBar.style.background = 'linear-gradient(90deg, #8A2BE2, #4CAF50)';
-        }
-      }
-      
-      // Fungsi untuk menampilkan notifikasi
-      function showNotification(message, isError = false) {
-        notification.textContent = message;
-        notification.style.background = isError ? '#f44336' : '#28a745';
-        notification.classList.add('show');
-        
-        setTimeout(() => {
-          notification.classList.remove('show');
-        }, 3000);
-      }
-      
-      // Fungsi untuk menyimpan file
-      function saveFiles() {
-        localStorage.setItem('mediaFiles', JSON.stringify(mediaFiles));
-        updateStorageDisplay();
-      }
-      
-      // Fungsi untuk menampilkan file
-      function displayFiles(filesToDisplay) {
-        fileList.innerHTML = '';
-        
-        if (filesToDisplay.length === 0) {
-          fileList.innerHTML = `
-            <div class="no-files">
-              <i class="fas fa-folder-open"></i>
-              <p>Tidak ada file yang ditemukan</p>
-            </div>
-          `;
-          return;
-        }
-        
-        filesToDisplay.forEach(file => {
-          // Tentukan ikon berdasarkan tipe file
-          let fileIcon = '📄';
-          if (file.type.includes('image')) fileIcon = '🖼️';
-          else if (file.type.includes('video')) fileIcon = '🎬';
-          else if (file.type.includes('audio')) fileIcon = '🎵';
-          else if (file.type.includes('zip') || file.type.includes('rar')) fileIcon = '📦';
-          
-          // Format ukuran file
-          let sizeText;
-          if (file.size < 1024) {
-            sizeText = `${file.size} bytes`;
-          } else if (file.size < 1024 * 1024) {
-            sizeText = `${(file.size / 1024).toFixed(1)} KB`;
-          } else if (file.size < 1024 * 1024 * 1024) {
-            sizeText = `${(file.size / (1024 * 1024)).toFixed(2)} MB`;
-          } else {
-            sizeText = `${(file.size / (1024 * 1024 * 1024)).toFixed(2)} GB`;
-          }
-          
-          const fileCard = document.createElement('div');
-          fileCard.className = 'file-card';
-          fileCard.innerHTML = `
-            <div class="file-preview">
-              <div class="file-icon">${fileIcon}</div>
-              <div class="file-type-tag">${file.type.split('/')[0] || 'File'}</div>
-            </div>
-            <div class="file-info">
-              <div class="file-name" title="${file.name}">${file.name}</div>
-              <div class="file-date">${formatDate(file.date)}</div>
-              <div class="file-size">${sizeText}</div>
-              <div class="file-actions">
-                <a href="${file.data}" download="${file.name}" class="download-btn">
-                  <i class="fas fa-download"></i> Download
-                </a>
-                <div class="delete-btn" data-id="${file.id}">
-                  <i class="fas fa-trash"></i> Hapus
-                </div>
-              </div>
-            </div>
-          `;
-          
-          // Tambahkan event listener untuk tombol hapus
-          const deleteBtn = fileCard.querySelector('.delete-btn');
-          deleteBtn.addEventListener('click', function() {
-            const fileId = this.getAttribute('data-id');
-            deleteFile(fileId);
-          });
-          
-          fileList.appendChild(fileCard);
-        });
-      }
-      
-      // Fungsi untuk menghapus file
-      function deleteFile(fileId) {
-        if (!confirm('Apakah Anda yakin ingin menghapus file ini?')) {
-          return;
-        }
-        
-        const fileIndex = mediaFiles.findIndex(file => file.id == fileId);
-        if (fileIndex !== -1) {
-          mediaFiles.splice(fileIndex, 1);
-          saveFiles();
-          
-          // Tampilkan file yang tersisa (dengan filter video jika tidak sedang pencarian)
-          const searchTerm = searchInput.value.trim().toLowerCase();
-          if (searchTerm) {
-            displayFiles(mediaFiles.filter(file => 
-              file.name.toLowerCase().includes(searchTerm) || 
-              (file.type && file.type.toLowerCase().includes(searchTerm))
-            ));
-          } else {
-            displayFiles(mediaFiles.filter(file => !file.type.includes('video')));
-          }
-          
-          showNotification('File berhasil dihapus');
-        }
-      }
-      
-      // Fungsi untuk memformat tanggal
-      function formatDate(dateString) {
-        const options = { 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
-        };
-        return new Date(dateString).toLocaleDateString('id-ID', options);
-      }
-      
-      // Fungsi untuk membaca file sebagai Data URL
-      function readFileAsDataURL(file) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-      }
-      
-      // Fungsi untuk menangani upload
-      uploadForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const file = fileInput.files[0];
-        const fileName = fileNameInput.value.trim() || file.name;
-        
-        if (!file) {
-          showNotification('Silakan pilih file terlebih dahulu!', true);
-          return;
-        }
-        
-        // PERUBAHAN: Batas ukuran file diubah menjadi 200MB
-        if (file.size > 200 * 1024 * 1024) { // 200MB
-          showNotification('File terlalu besar! Maksimal 200MB.', true);
-          return;
-        }
-        
-        // Hitung total ukuran penyimpanan
-        const totalSize = mediaFiles.reduce((sum, f) => sum + f.size, 0) + file.size;
-        if (totalSize > MAX_STORAGE) {
-          showNotification('Penyimpanan penuh! Hapus beberapa file.', true);
-          return;
-        }
-        
-        try {
-          // Baca file sebagai Data URL
-          const dataURL = await readFileAsDataURL(file);
-          
-          // Tambahkan file baru
-          const newFile = {
-            id: Date.now(),
-            name: fileName,
-            type: file.type,
-            size: file.size,
-            data: dataURL,
-            date: new Date().toISOString()
-          };
-          
-          mediaFiles.push(newFile);
-          saveFiles();
-          
-          // Tampilkan file yang tersisa (dengan filter video jika tidak sedang pencarian)
-          const searchTerm = searchInput.value.trim().toLowerCase();
-          if (searchTerm) {
-            displayFiles(mediaFiles.filter(file => 
-              file.name.toLowerCase().includes(searchTerm) || 
-              (file.type && file.type.toLowerCase().includes(searchTerm))
-            ));
-          } else {
-            displayFiles(mediaFiles.filter(file => !file.type.includes('video')));
-          }
-          
-          showNotification(`File "${fileName}" berhasil diupload!`);
-          
-          // Reset form
-          uploadForm.reset();
-        } catch (error) {
-          console.error('Error uploading file:', error);
-          // Tidak menampilkan pesan "gagal mengupload media"
-        }
-      });
-      
-      // Fungsi untuk pencarian
-      searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase().trim();
-        
-        if (searchTerm === '') {
-          // Jika tidak ada pencarian, sembunyikan video
-          displayFiles(mediaFiles.filter(file => !file.type.includes('video')));
-          return;
-        }
-        
-        // Jika ada pencarian, tampilkan semua file yang cocok termasuk video
-        const filteredFiles = mediaFiles.filter(file => 
-          file.name.toLowerCase().includes(searchTerm) || 
-          (file.type && file.type.toLowerCase().includes(searchTerm))
-        );
-        
-        displayFiles(filteredFiles);
-      });
-      
-      // Tampilkan file saat pertama kali dimuat (tanpa video)
-      const filesWithoutVideo = mediaFiles.filter(file => !file.type.includes('video'));
-      displayFiles(filesWithoutVideo);
-      updateStorageDisplay();
-    }
-    
-    // ==================== SALJU DAN DETEKSI MOBILE ====================
+    // ==================== DETEKSI MOBILE ====================
     const popupWarning = document.getElementById('popup-warning');
     const closePopupBtn = document.getElementById('close-popup');
-    const canvas = document.getElementById('salju');
-    const ctx = canvas.getContext('2d');
-    let snowflakes = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function createSnowflakes() {
-      for (let i = 0; i < 100; i++) {
-        snowflakes.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 4 + 1,
-          speedY: Math.random() * 2 + 1,
-          speedX: Math.random() * 1 - 0.5,
-        });
-      }
-    }
-
-    function drawSnowflakes() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'white';
-      ctx.beginPath();
-      for (let flake of snowflakes) {
-        ctx.moveTo(flake.x, flake.y);
-        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-      }
-      ctx.fill();
-      updateSnowflakes();
-    }
-
-    function updateSnowflakes() {
-      for (let flake of snowflakes) {
-        flake.y += flake.speedY;
-        flake.x += flake.speedX;
-        if (flake.y > canvas.height) {
-          flake.y = -flake.radius;
-          flake.x = Math.random() * canvas.width;
-        }
-      }
-    }
-
-    function animateSnow() {
-      drawSnowflakes();
-      requestAnimationFrame(animateSnow);
-    }
 
     function isMobileDevice() {
       return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0) || /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|rim)|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(navigator.userAgent||navigator.vendor||window.opera);
     }
-
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    createSnowflakes();
-    animateSnow();
 
     if (isMobileDevice()) {
       popupWarning.style.display = 'flex';
