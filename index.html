@@ -6,7 +6,7 @@
   <meta name="HandheldFriendly" content="false">
   <title>Pembelian Produk Panel</title>
   <!-- Tag meta verifikasi Google ditambahkan di sini -->
-  <meta name="google-site-verification" content="uVGKa7NuF1qX7fFfjIYU05f1ITWlDCtWukrGgDgUZFs"/>
+  <meta name="google-site-verification" content="uVGKa7NuF1qX7fFfjIYU05f1ITW7lDCtWukrGgDgUZFs"/>
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://panel-tiyan-store.vercel.app/">
@@ -429,74 +429,6 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-    }
-
-    /* ==================== ADMIN LOGIN MODAL ==================== */
-    .admin-login-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 10002;
-    }
-
-    .admin-login-box {
-      background: var(--card-bg);
-      padding: 30px;
-      border-radius: 15px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      border: 2px solid var(--primary-color);
-    }
-
-    .admin-login-box h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: var(--primary-color);
-    }
-
-    .admin-login-box input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid rgba(138, 43, 226, 0.3);
-      background: rgba(0, 0, 0, 0.3);
-      color: white;
-      font-size: 16px;
-    }
-
-    .admin-login-box button {
-      width: 100%;
-      padding: 12px;
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
-    }
-
-    .admin-login-box button:hover {
-      background: var(--accent-color);
-    }
-
-    .admin-login-box .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
     }
 
     /* ==================== STYLE UTAMA ==================== */
@@ -1576,169 +1508,6 @@
       text-decoration: underline;
     }
 
-    /* ==================== STYLE ADMIN PANEL ==================== */
-    .admin-panel {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 10000;
-      background: var(--button-gradient);
-      padding: 12px 20px;
-      border-radius: 50px;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-    }
-    
-    .admin-panel:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-    }
-    
-    .admin-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 10001;
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .admin-modal {
-      background: var(--card-bg);
-      width: 90%;
-      max-width: 800px;
-      max-height: 90vh;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    
-    .admin-header {
-      background: var(--chat-header-bg);
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
-    
-    .admin-tabs {
-      display: flex;
-      background: rgba(0,0,0,0.2);
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    .admin-tab {
-      padding: 15px 20px;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-bottom: 3px solid transparent;
-    }
-    
-    .admin-tab.active {
-      border-bottom: 3px solid var(--primary-color);
-      background: rgba(138, 43, 226, 0.1);
-    }
-    
-    .admin-content {
-      padding: 20px;
-      max-height: 60vh;
-      overflow-y: auto;
-    }
-    
-    .admin-section {
-      display: none;
-    }
-    
-    .admin-section.active {
-      display: block;
-    }
-    
-    .product-form {
-      display: grid;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .product-form input, .product-form textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid rgba(138, 43, 226, 0.3);
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.3);
-      color: white;
-    }
-    
-    .product-form textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-    
-    .product-list {
-      display: grid;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .product-item-admin {
-      background: rgba(0,0,0,0.2);
-      padding: 15px;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .product-actions {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .edit-btn {
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    
-    .delete-btn-admin {
-      background: #f44336;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    
-    .web-content-form {
-      display: grid;
-      gap: 15px;
-    }
-    
-    .web-content-item {
-      background: rgba(0,0,0,0.2);
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-    
-    .content-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    
     /* ==================== MEDIA QUERIES UNTUK LAYAR KECIL (MOBILE) ==================== */
     @media (max-width: 768px) {
       .sidebar {
@@ -1904,147 +1673,12 @@
       .delete-account-section h2 {
         font-size: 24px;
       }
-
-      /* Admin panel mobile styles */
-      .admin-panel {
-        bottom: 10px;
-        left: 10px;
-        padding: 10px 15px;
-        font-size: 14px;
-      }
-      
-      .admin-modal {
-        width: 95%;
-        max-height: 85vh;
-      }
-      
-      .admin-tabs {
-        flex-wrap: wrap;
-      }
-      
-      .admin-tab {
-        padding: 10px 15px;
-        flex: 1;
-        min-width: 120px;
-        text-align: center;
-      }
-      
-      .product-item-admin {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      
-      .product-actions {
-        align-self: flex-end;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Admin Login Modal -->
-  <div class="admin-login-modal" id="adminLoginModal">
-    <div class="admin-login-box">
-      <button class="close-btn" id="closeAdminLogin">✕</button>
-      <h2>Login Admin Panel</h2>
-      <input type="text" id="adminUsernameInput" placeholder="Username Admin">
-      <input type="password" id="adminPasswordInput" placeholder="Password">
-      <button id="adminLoginBtn">Login</button>
-    </div>
-  </div>
-
-  <!-- Admin Modal -->
-  <div class="admin-overlay" id="adminOverlay">
-    <div class="admin-modal">
-      <div class="admin-header">
-        <h2>Panel Admin</h2>
-        <button id="closeAdmin" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">✕</button>
-      </div>
-      
-      <div class="admin-tabs">
-        <div class="admin-tab active" data-tab="produk">Kelola Produk</div>
-        <div class="admin-tab" data-tab="web">Edit Konten Web</div>
-        <div class="admin-tab" data-tab="settings">Pengaturan</div>
-      </div>
-      
-      <div class="admin-content">
-        <!-- Kelola Produk Section -->
-        <div class="admin-section active" id="produk-section-admin">
-          <h3>Tambah Produk Baru</h3>
-          <form class="product-form" id="addProductForm">
-            <input type="text" id="productName" placeholder="Nama Produk" required>
-            <input type="number" id="productPrice" placeholder="Harga" required>
-            <input type="text" id="productImage" placeholder="URL Gambar" required>
-            <textarea id="productDescription" placeholder="Deskripsi Produk" required></textarea>
-            <button type="submit" style="background: var(--primary-color); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer;">Tambah Produk</button>
-          </form>
-          
-          <h3>Daftar Produk</h3>
-          <div class="product-list" id="productListAdmin">
-            <!-- Produk akan dimuat di sini -->
-          </div>
-        </div>
-        
-        <!-- Edit Konten Web Section -->
-        <div class="admin-section" id="web-section-admin">
-          <h3>Edit Konten Web</h3>
-          <div class="web-content-form">
-            <div class="web-content-item">
-              <label>Judul Halaman Utama</label>
-              <input type="text" id="mainTitle" placeholder="Judul Halaman Utama">
-              <div class="content-actions">
-                <button class="edit-btn" onclick="saveWebContent('mainTitle')">Simpan</button>
-              </div>
-            </div>
-            
-            <div class="web-content-item">
-              <label>Deskripsi QRIS</label>
-              <textarea id="qrisDescription" placeholder="Deskripsi untuk bagian QRIS"></textarea>
-              <div class="content-actions">
-                <button class="edit-btn" onclick="saveWebContent('qrisDescription')">Simpan</button>
-              </div>
-            </div>
-            
-            <div class="web-content-item">
-              <label>URL QR Code</label>
-              <input type="text" id="qrisUrl" placeholder="URL gambar QR Code">
-              <div class="content-actions">
-                <button class="edit-btn" onclick="saveWebContent('qrisUrl')">Simpan</button>
-              </div>
-            </div>
-            
-            <div class="web-content-item">
-              <label>Pesan Footer</label>
-              <textarea id="footerMessage" placeholder="Pesan di bagian footer"></textarea>
-              <div class="content-actions">
-                <button class="edit-btn" onclick="saveWebContent('footerMessage')">Simpan</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Pengaturan Section -->
-        <div class="admin-section" id="settings-section-admin">
-          <h3>Pengaturan Admin</h3>
-          <div class="web-content-form">
-            <div class="web-content-item">
-              <label>Username Admin</label>
-              <input type="text" id="adminUsername" placeholder="Username admin">
-            </div>
-            
-            <div class="web-content-item">
-              <label>Password Baru</label>
-              <input type="password" id="adminPassword" placeholder="Password baru">
-            </div>
-            
-            <div class="content-actions">
-              <button class="edit-btn" onclick="updateAdminSettings()">Perbarui Pengaturan</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Admin Login Modal DIHAPUS -->
+  <!-- Admin Modal DIHAPUS -->
 
   <!-- Sidebar Menu -->
   <div class="sidebar" id="sidebar">
@@ -2060,9 +1694,10 @@
       <li><a href="#" data-section="qr-section"><i class="fas fa-qrcode"></i> QRIS</a></li>
       <li><a href="#" data-section="contact-section"><i class="fas fa-address-book"></i> Kontak</a></li>
       <li><a href="#" data-section="web-links-section"><i class="fas fa-link"></i> Web Links</a></li>
-      <li><a href="https://list-web-olive.vercel.app/" target="_blank"><i class="fas fa-list"></i> List MyWeb</a></li>
+      <!-- LINK DIUBAH DI SINI -->
+      <li><a href="https://web.tiyan.biz.id" target="_blank"><i class="fas fa-list"></i> List MyWeb</a></li>
       <li><a href="https://tiyanzxbella.github.io/Gemini-ai/" target="_blank"><i class="fas fa-robot"></i> Gemini AI</a></li>
-      <li><a href="#" data-section="admin-section" id="admin-section-link"><i class="fas fa-cog"></i> Admin Panel</a></li>
+      <!-- Admin Panel link DIHAPUS -->
       <li><a href="https://myportofoliotiyan.vercel.app/" target="_blank"><i class="fas fa-user-tie"></i> Portofolio</a></li>
       <li><a href="https://buylink.id/Tiyanstore" target="_blank"><i class="fas fa-shopping-cart"></i> Topup & PPOB</a></li>
       <li><a href="https://app.bukaolshop.com/toko/tiyanzstore" target="_blank"><i class="fas fa-mobile-alt"></i> Download App</a></li>
@@ -2345,33 +1980,7 @@
         </div>
       </div>
       
-      <!-- Admin Section -->
-      <div id="admin-section" class="content-section">
-        <div class="admin-section-content">
-          <h2><i class="fas fa-cog"></i> Panel Admin</h2>
-          <p>Kelola konten website dan produk Anda dari sini.</p>
-          
-          <div class="admin-actions">
-            <div class="admin-action-card" onclick="openAdminPanel()">
-              <i class="fas fa-boxes"></i>
-              <h3>Kelola Produk</h3>
-              <p>Tambah, edit, atau hapus produk dari katalog</p>
-            </div>
-            
-            <div class="admin-action-card" onclick="openAdminPanel('web')">
-              <i class="fas fa-edit"></i>
-              <h3>Edit Konten Web</h3>
-              <p>Ubah teks dan gambar di halaman website</p>
-            </div>
-            
-            <div class="admin-action-card" onclick="openAdminPanel('settings')">
-              <i class="fas fa-user-cog"></i>
-              <h3>Pengaturan Admin</h3>
-              <p>Ubah username dan password admin</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Admin Section DIHAPUS -->
       
       <!-- Hapus Akun Section -->
       <div id="delete-account-section" class="content-section">
@@ -2454,7 +2063,6 @@
     const contentSections = document.querySelectorAll('.content-section');
     const sidebarChatButton = document.getElementById('sidebar-chat-button');
     const logoutLink = document.getElementById('logout-link');
-    const adminSectionLink = document.getElementById('admin-section-link');
 
     // Toggle sidebar on mobile
     sidebarToggle.addEventListener('click', function() {
@@ -2499,291 +2107,6 @@
         sidebar.classList.remove('active');
       }
     });
-
-    // ==================== ADMIN LOGIN SYSTEM ====================
-    const adminLoginModal = document.getElementById('adminLoginModal');
-    const closeAdminLogin = document.getElementById('closeAdminLogin');
-    const adminLoginBtn = document.getElementById('adminLoginBtn');
-    const adminUsernameInput = document.getElementById('adminUsernameInput');
-    const adminPasswordInput = document.getElementById('adminPasswordInput');
-
-    // Admin credentials
-    const ADMIN_USERNAME = 'Tiyan';
-    const ADMIN_PASSWORD = 'Tiyan321';
-
-    // Show admin login modal when admin section is clicked
-    adminSectionLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      adminLoginModal.style.display = 'flex';
-    });
-
-    // Close admin login modal
-    closeAdminLogin.addEventListener('click', function() {
-      adminLoginModal.style.display = 'none';
-    });
-
-    // Admin login function
-    adminLoginBtn.addEventListener('click', function() {
-      const username = adminUsernameInput.value.trim();
-      const password = adminPasswordInput.value.trim();
-      
-      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        // Login successful
-        adminLoginModal.style.display = 'none';
-        openAdminPanel();
-        
-        // Clear inputs
-        adminUsernameInput.value = '';
-        adminPasswordInput.value = '';
-      } else {
-        alert('Username atau password admin salah!');
-      }
-    });
-
-    // ==================== ADMIN PANEL FUNCTIONALITY ====================
-    const adminOverlay = document.getElementById('adminOverlay');
-    const closeAdmin = document.getElementById('closeAdmin');
-    const adminTabs = document.querySelectorAll('.admin-tab');
-    const adminSections = document.querySelectorAll('.admin-section');
-
-    // Buka admin panel
-    function openAdminPanel(tab = 'produk') {
-      adminOverlay.style.display = 'flex';
-      loadWebContent();
-      loadProductsForAdmin();
-      
-      // Aktifkan tab yang dipilih
-      adminTabs.forEach(t => t.classList.remove('active'));
-      adminSections.forEach(s => s.classList.remove('active'));
-      
-      document.querySelector(`.admin-tab[data-tab="${tab}"]`).classList.add('active');
-      document.getElementById(`${tab}-section-admin`).classList.add('active');
-    }
-
-    // Tutup admin panel
-    closeAdmin.addEventListener('click', function() {
-      adminOverlay.style.display = 'none';
-    });
-
-    // Switch tab di admin panel
-    adminTabs.forEach(tab => {
-      tab.addEventListener('click', function() {
-        const tabId = this.getAttribute('data-tab');
-        
-        // Remove active class from all tabs
-        adminTabs.forEach(t => t.classList.remove('active'));
-        // Add active class to clicked tab
-        this.classList.add('active');
-        
-        // Hide all sections
-        adminSections.forEach(section => section.classList.remove('active'));
-        // Show the selected section
-        document.getElementById(`${tabId}-section-admin`).classList.add('active');
-      });
-    });
-
-    // ==================== FUNGSI MANAJEMEN PRODUK ====================
-    // GAMBAR PRODUK DIUBAH DI SINI - semua produk menggunakan gambar baru
-    let produk = JSON.parse(localStorage.getItem('produk')) || [
-      { id: 1, nama: 'Panel 1GB', harga: 1000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 1GB cocok untuk penggunaan ringan. Termasuk kuota 1GB, kecepatan tinggi, masa aktif 30 hari, dan support 24/7." },
-      { id: 2, nama: 'Panel 2GB', harga: 2000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 2GB untuk penggunaan menengah. Menawarkan kuota 2GB, bisa dibagi ke beberapa perangkat, tanpa throttle kecepatan, dan garansi pengisian ulang." },
-      { id: 3, nama: 'Panel 3GB', harga: 3000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 3GB ideal untuk kebutuhan harian. Dilengkapi kuota 3GB, stabil untuk browsing dan streaming, serta fitur keamanan standar." },
-      { id: 4, nama: 'Panel 4GB', harga: 4000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 4GB menawarkan keseimbangan. Dengan kuota 4GB, cocok untuk gamer kasual dan pekerja remote, dilengkapi akses cepat ke server." },
-      { id: 5, nama: 'Panel 5GB', harga: 5000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 5GB adalah pilihan populer. Menyediakan kuota 5GB, cocok untuk streaming HD dan video conference, serta dukungan multi-platform." },
-      { id: 6, nama: 'Panel 6GB', harga: 6000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 6GB untuk penggunaan intensif. Dengan kuota 6GB, koneksi sangat stabil untuk download besar dan aktivitas online berat." },
-      { id: 7, nama: 'Panel 7GB', harga: 7000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 7GB memberikan performa ekstra. Kuota 7GB dengan prioritas jaringan, cocok untuk bisnis kecil dan penggunaan keluarga." },
-      { id: 8, nama: 'Panel 8GB', harga: 8000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 8GB adalah solusi lengkap. Kuota 8GB, fitur VPN terintegrasi, dan perlindungan DDoS untuk keamanan lebih." },
-      { id: 9, nama: 'Panel 9GB', harga: 9000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 9GB untuk pengguna tingkat lanjut. Kuota 9GB, dengan opsi kustomisasi server dan performa maksimal untuk aplikasi berat." },
-      { id: 10, nama: 'Panel 10GB', harga: 10000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel 10GB, paket tertinggi reguler. Kuota 10GB, sangat direkomendasikan untuk profesional dan penggunaan data tinggi." },
-      { id: 11, nama: 'Panel Unli', harga: 15000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
-        deskripsi: "Panel Unlimited adalah paket premium kami. Kuota tanpa batas, kecepatan stabil 24/7, prioritas jaringan, dan masa aktif 30 hari. Pilihan terbaik untuk penggunaan berat!" },
-    ];
-
-    // Simpan produk ke localStorage
-    function saveProducts() {
-      localStorage.setItem('produk', JSON.stringify(produk));
-    }
-
-    // Tambah produk baru
-    document.getElementById('addProductForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const name = document.getElementById('productName').value;
-      const price = parseInt(document.getElementById('productPrice').value);
-      const image = document.getElementById('productImage').value;
-      const description = document.getElementById('productDescription').value;
-      
-      const newProduct = {
-        id: Date.now(),
-        nama: name,
-        harga: price,
-        gambar: image,
-        deskripsi: description
-      };
-      
-      produk.push(newProduct);
-      saveProducts();
-      displayProduk();
-      loadProductsForAdmin();
-      
-      // Reset form
-      document.getElementById('addProductForm').reset();
-      
-      alert('Produk berhasil ditambahkan!');
-    });
-
-    // Load produk untuk admin panel
-    function loadProductsForAdmin() {
-      const productList = document.getElementById('productListAdmin');
-      productList.innerHTML = '';
-      
-      if (produk.length === 0) {
-        productList.innerHTML = '<p>Tidak ada produk</p>';
-        return;
-      }
-      
-      produk.forEach(product => {
-        const productItem = document.createElement('div');
-        productItem.className = 'product-item-admin';
-        productItem.innerHTML = `
-          <div>
-            <h4>${product.nama}</h4>
-            <p>Rp ${product.harga.toLocaleString()}</p>
-          </div>
-          <div class="product-actions">
-            <button class="edit-btn" onclick="editProduct(${product.id})">Edit</button>
-            <button class="delete-btn-admin" onclick="deleteProduct(${product.id})">Hapus</button>
-          </div>
-        `;
-        productList.appendChild(productItem);
-      });
-    }
-
-    // Edit produk
-    function editProduct(id) {
-      const product = produk.find(p => p.id === id);
-      if (!product) return;
-      
-      const newName = prompt('Nama produk baru:', product.nama);
-      if (newName === null) return;
-      
-      const newPrice = prompt('Harga baru:', product.harga);
-      if (newPrice === null) return;
-      
-      const newImage = prompt('URL gambar baru:', product.gambar);
-      if (newImage === null) return;
-      
-      const newDescription = prompt('Deskripsi baru:', product.deskripsi);
-      if (newDescription === null) return;
-      
-      product.nama = newName;
-      product.harga = parseInt(newPrice);
-      product.gambar = newImage;
-      product.deskripsi = newDescription;
-      
-      saveProducts();
-      displayProduk();
-      loadProductsForAdmin();
-      
-      alert('Produk berhasil diupdate!');
-    }
-
-    // Hapus produk
-    function deleteProduct(id) {
-      if (!confirm('Apakah Anda yakin ingin menghapus produk ini?')) return;
-      
-      produk = produk.filter(p => p.id !== id);
-      saveProducts();
-      displayProduk();
-      loadProductsForAdmin();
-      
-      alert('Produk berhasil dihapus!');
-    }
-
-    // ==================== FUNGSI EDIT KONTEN WEB ====================
-    let webContent = JSON.parse(localStorage.getItem('webContent')) || {
-      mainTitle: 'Pembelian Produk Panel',
-      qrisDescription: 'Gunakan QRIS berikut untuk melakukan pembayaran dengan mudah melalui berbagai aplikasi e-wallet atau mobile banking yang mendukung QRIS.',
-      // QRIS URL DIUBAH DI SINI
-      qrisUrl: 'https://files.catbox.moe/4x2fdt.jpg',
-      footerMessage: ''
-    };
-
-    // Simpan konten web
-    function saveWebContent(field) {
-      if (field) {
-        // Simpan field tertentu
-        const value = document.getElementById(field).value;
-        webContent[field] = value;
-      }
-      
-      localStorage.setItem('webContent', JSON.stringify(webContent));
-      applyWebContent();
-      alert('Konten web berhasil disimpan!');
-    }
-
-    // Load konten web
-    function loadWebContent() {
-      const savedContent = JSON.parse(localStorage.getItem('webContent'));
-      if (savedContent) {
-        webContent = savedContent;
-        
-        // Isi form di admin panel
-        document.getElementById('mainTitle').value = webContent.mainTitle || '';
-        document.getElementById('qrisDescription').value = webContent.qrisDescription || '';
-        document.getElementById('qrisUrl').value = webContent.qrisUrl || '';
-        document.getElementById('footerMessage').value = webContent.footerMessage || '';
-      }
-      
-      applyWebContent();
-    }
-
-    // Terapkan konten web ke halaman
-    function applyWebContent() {
-      if (webContent.mainTitle) {
-        document.getElementById('mainTitle').textContent = webContent.mainTitle;
-      }
-      
-      if (webContent.qrisDescription) {
-        document.getElementById('qrisDescription').textContent = webContent.qrisDescription;
-      }
-      
-      if (webContent.qrisUrl) {
-        document.getElementById('barcode').src = webContent.qrisUrl;
-      }
-    }
-
-    // ==================== FUNGSI PENGATURAN ADMIN ====================
-    function updateAdminSettings() {
-      const newUsername = document.getElementById('adminUsername').value;
-      const newPassword = document.getElementById('adminPassword').value;
-      
-      if (newUsername || newPassword) {
-        // Update user admin di database
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        const adminIndex = users.findIndex(u => u.username === 'Tiyan');
-        
-        if (adminIndex !== -1) {
-          if (newUsername) users[adminIndex].username = newUsername;
-          if (newPassword) users[adminIndex].password = newPassword;
-          
-          localStorage.setItem('users', JSON.stringify(users));
-          alert('Pengaturan admin berhasil diperbarui!');
-        }
-      } else {
-        alert('Tidak ada perubahan yang dilakukan.');
-      }
-    }
 
     // ==================== LOGIN & SIGNUP SYSTEM ====================
     // Variabel untuk menyimpan data user (simulasi database)
@@ -2909,9 +2232,6 @@
       if (isMobileDevice()) {
         popupWarning.style.display = 'flex';
       }
-      
-      // Load konten web yang disimpan
-      loadWebContent();
       
       // Tampilkan produk
       displayProduk();
@@ -3213,6 +2533,32 @@
     }
 
     // ==================== PRODUK DAN FUNGSIONALITAS UTAMA ====================
+    // GAMBAR PRODUK DIUBAH DI SINI - semua produk menggunakan gambar baru
+    let produk = [
+      { id: 1, nama: 'Panel 1GB', harga: 1000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 1GB cocok untuk penggunaan ringan. Termasuk kuota 1GB, kecepatan tinggi, masa aktif 30 hari, dan support 24/7." },
+      { id: 2, nama: 'Panel 2GB', harga: 2000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 2GB untuk penggunaan menengah. Menawarkan kuota 2GB, bisa dibagi ke beberapa perangkat, tanpa throttle kecepatan, dan garansi pengisian ulang." },
+      { id: 3, nama: 'Panel 3GB', harga: 3000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 3GB ideal untuk kebutuhan harian. Dilengkapi kuota 3GB, stabil untuk browsing dan streaming, serta fitur keamanan standar." },
+      { id: 4, nama: 'Panel 4GB', harga: 4000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 4GB menawarkan keseimbangan. Dengan kuota 4GB, cocok untuk gamer kasual dan pekerja remote, dilengkapi akses cepat ke server." },
+      { id: 5, nama: 'Panel 5GB', harga: 5000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 5GB adalah pilihan populer. Menyediakan kuota 5GB, cocok untuk streaming HD dan video conference, serta dukungan multi-platform." },
+      { id: 6, nama: 'Panel 6GB', harga: 6000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 6GB untuk penggunaan intensif. Dengan kuota 6GB, koneksi sangat stabil untuk download besar dan aktivitas online berat." },
+      { id: 7, nama: 'Panel 7GB', harga: 7000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 7GB memberikan performa ekstra. Kuota 7GB dengan prioritas jaringan, cocok untuk bisnis kecil dan penggunaan keluarga." },
+      { id: 8, nama: 'Panel 8GB', harga: 8000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 8GB adalah solusi lengkap. Kuota 8GB, fitur VPN terintegrasi, dan perlindungan DDoS untuk keamanan lebih." },
+      { id: 9, nama: 'Panel 9GB', harga: 9000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 9GB untuk pengguna tingkat lanjut. Kuota 9GB, dengan opsi kustomisasi server dan performa maksimal untuk aplikasi berat." },
+      { id: 10, nama: 'Panel 10GB', harga: 10000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel 10GB, paket tertinggi reguler. Kuota 10GB, sangat direkomendasikan untuk profesional dan penggunaan data tinggi." },
+      { id: 11, nama: 'Panel Unli', harga: 15000, gambar: 'https://files.catbox.moe/6hjbh4.jpg',
+        deskripsi: "Panel Unlimited adalah paket premium kami. Kuota tanpa batas, kecepatan stabil 24/7, prioritas jaringan, dan masa aktif 30 hari. Pilihan terbaik untuk penggunaan berat!" },
+    ];
+
     function displayProduk() {
       const produkContainer = document.getElementById('produk');
       produkContainer.innerHTML = '';
